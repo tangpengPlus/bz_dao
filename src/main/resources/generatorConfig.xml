@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>  
+    <context id="createMysqlTableXml"  targetRuntime="MyBatis3">  
+    	<property name="javaFileEncoding" value="UTF-8"/>
+    	<plugin type="com.bz.dao.tool.sql.GenPlugin">
+			<property name="mappers" value="com.bz.dao.mapper.base.BaseMapper" />
+		</plugin>
+    	<commentGenerator>
+			<!-- 取消生成注释 -->
+			<property name="suppressAllComments" value="true"/>
+		</commentGenerator>   
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://192.168.2.202:3306/bz_merchant?characterEncoding=utf8" userId="bztest" password="bz123456">  
+          <!-- JavaBean 文件生成字段注释 -->
+          <property name="useInformationSchema" value="true"></property>
+        </jdbcConnection>  
+        <javaTypeResolver>  
+            <property name="forceBigDecimals" value="false"/>  
+        </javaTypeResolver>  
+        <javaModelGenerator targetPackage="com.bz.dao.pojo.map" targetProject="src/main/java">  
+            <property name="enableSubPackages" value="true"/>  
+            <property name="trimStrings" value="true"/>  
+        </javaModelGenerator>  
+         <sqlMapGenerator targetPackage="mapper.system.map" targetProject="src/main/resources">  
+            <property name="enableSubPackages" value="true"/>  
+        </sqlMapGenerator>  
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.bz.dao.mapper.map" targetProject="src/main/java">  
+            <property name="enableSubPackages" value="true"/>  
+        </javaClientGenerator>
+       <table tableName="merchant_shop" domainObjectName="MerchantShop" enableCountByExample="false" enableUpdateByExample="false"
+         enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+         <property name="rootClass" value="com.bz.framework.pojo.base.BasePojo" />
+          <generatedKey column="id" sqlStatement="MySql"  identity="true"/>
+         </table>
+    </context>  
+</generatorConfiguration>  
